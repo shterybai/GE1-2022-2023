@@ -17,7 +17,8 @@ public class Generator : MonoBehaviour
                 float angle = theta*j;
                 float x = Mathf.Cos(angle);
                 float y = Mathf.Sin(angle);
-                Instantiate(myPrefab, new Vector3(x*i*radius, y*i*radius, 0), Quaternion.identity);
+                GameObject g = Instantiate(myPrefab, new Vector3(x*i*radius, y*i*radius, 0), Quaternion.identity);
+                g.GetComponent<Renderer>().material.color = Color.HSVToRGB(j/(float)noOfPrefabs, i, i);
             }
         }
     }
@@ -25,9 +26,6 @@ public class Generator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < 255; i++) {
-            Color c = new Color(0.5f, 0.5f, 0.5f);
-            gameObject.GetComponent<Renderer>().material.color = c;
-        }
+        
     }
 }
