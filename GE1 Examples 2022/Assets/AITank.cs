@@ -22,6 +22,17 @@ public class AITank : MonoBehaviour {
             // You can draw gizmos using
             // Gizmos.color = Color.green;
             // Gizmos.DrawWireSphere(pos, 1);
+
+            float theta = 2.0f * Mathf.PI / (float)numWaypoints;
+
+            for(int i = 0; i < numWaypoints; i++) {
+                float x = Mathf.Sin(theta * i) * radius;
+                float z = Mathf.Cos(theta * i) * radius;
+
+                Vector3 gizmoPos = new Vector3(x, 0, z);
+                Gizmos.color = Color.green;
+                Gizmos.DrawWireSphere(gizmoPos, 1);
+            }
         }
     }
 
@@ -30,6 +41,16 @@ public class AITank : MonoBehaviour {
         // Task 2
         // Put code here to calculate the waypoints in a loop and 
         // Add them to the waypoints List
+
+        float theta = 2.0f * Mathf.PI / (float)numWaypoints;
+
+        for(int i = 0; i < numWaypoints; i++) {
+            float x = Mathf.Sin(theta * i) * radius;
+            float z = Mathf.Cos(theta * i) * radius;
+
+            Vector3 waypointPos = new Vector3(x, 0, z);
+            waypoints.Add(waypointPos);
+        }
     }
 
     // Update is called once per frame
